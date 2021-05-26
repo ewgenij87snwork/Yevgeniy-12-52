@@ -13,7 +13,7 @@
           <ng-template pTemplate="body" let-productsCars>
               <tr>
                   <td>{{productsCars.code}}</td>
-                  <td>{{productsCars.name}}</td>
+                  <td [class.sale]="productsCars.name === 'Volvo'" >{{productsCars.name}}</td>
                   <td>{{productsCars.category}}</td>
                   <td>{{productsCars.quantity}}</td>
               </tr>
