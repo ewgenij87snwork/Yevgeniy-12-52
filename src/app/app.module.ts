@@ -5,6 +5,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {TableModule} from 'primeng/table';
 import {HttpClientModule} from '@angular/common/http';
+import {ProductCardModule} from './product-card/product-card.module';
+import {CardModule} from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     TableModule,
-    HttpClientModule
+    HttpClientModule,
+    ProductCardModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

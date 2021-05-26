@@ -1,0 +1,11 @@
+<p-card header="Product Card"  [style]="{width: '360px'}" styleClass="ui-card-shadow">
+  <h4>Code: {{product.code}}</h4>
+  <h4>Name: {{product.name}}</h4>
+  <h4>Category: {{product.category}}</h4>
+  <h4>Quantity: {{product.quantity}}</h4>
+  <br>
+  <br>
+  <p-footer>
+    <button pButton type="button" label="Дублировать" icon="pi pi-plus" (click)="onAdd()"></button>
+  </p-footer>
+</p-card>

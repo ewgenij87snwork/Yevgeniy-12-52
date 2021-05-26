@@ -1,27 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-
-interface Product {
-  code: string;
-  name: string;
-  category: string;
-  quantity: number;
-}
-
-interface User {
-  name: string;
-  email: string;
-  city: string;
-  phone: number;
-  website: string;
-}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   constructor(private http: HttpClient) {
   }
 
@@ -47,6 +32,16 @@ export class AppComponent implements OnInit {
     this.http.get<any>('https://jsonplaceholder.typicode.com/users')
       .subscribe(data => this.users = data);
   }
+
+  addProduct() {
+    this.products.push({code: 'CA001*', name: 'Tesla*', category: 'cars', quantity: 0});
+  }
+
+  ngAfterViewInit() {
+    console.log(this.productsCars);
+    console.log(this.users);
+  }
+
 }
 
 
