@@ -27,7 +27,8 @@ export class AppComponent {
     {code: 'A0005', name: 'Audi', category: 'cars', quantity: 13},
     {code: 'H0001', name: 'Honda', category: 'cars', quantity: 8},
   ];
-  public productsCars: Product[] = this.products.filter(product => product.category === 'cars');
+  public productsCars: Product[] = this.products.filter(product => product.category === 'cars')
+    .sort((a, b) => a.quantity - b.quantity);
 }
 
 
