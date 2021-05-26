@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 interface Product {
   code: string;
@@ -7,13 +8,25 @@ interface Product {
   quantity: number;
 }
 
+interface User {
+  name: string;
+  email: string;
+  city: string;
+  phone: number;
+  website: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private http: HttpClient) {
+  }
+
   public title = 'be-ua';
+  public users: User[] = [];
   public products: Product[] = [
     {code: 'CA001', name: 'Tesla', category: 'cars', quantity: 1},
     {code: 'PH01', name: 'Samsung A3', category: 'phones', quantity: 5},
@@ -29,6 +42,11 @@ export class AppComponent {
   ];
   public productsCars: Product[] = this.products.filter(product => product.category === 'cars')
     .sort((a, b) => a.quantity - b.quantity);
+
+  ngOnInit() {
+    this.http.get<any>('https://jsonplaceholder.typicode.com/users')
+      .subscribe(data => this.users = data);
+  }
 }
 
 
